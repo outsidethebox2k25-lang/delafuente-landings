@@ -10,6 +10,7 @@ import {
   FAQs,
   Urgency,
   FinalCta,
+  VisitUs,
 } from '@/components/medicare/sections';
 import { Nav } from '@/components/shared/nav';
 import { Footer } from '@/components/shared/footer';
@@ -69,6 +70,7 @@ export default async function MedicarePage({ params }: PageProps<'/[lang]/medica
       <Benefits dict={dict} />
       <Proof dict={dict} />
       <Process dict={dict} />
+      <VisitUs lang={lang} />
       <FAQs dict={dict} />
       <Urgency dict={dict} phone={PHONE} />
 

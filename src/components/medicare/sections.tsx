@@ -158,32 +158,49 @@ export function Why({ dict }: { dict: MedicareDict }) {
   return (
     <section id="services" className="bg-white px-5 py-16 sm:py-20 lg:px-8 lg:py-28">
       <div className="mx-auto max-w-7xl">
-        <Reveal className="max-w-3xl">
-          <p className="text-[10px] font-bold uppercase tracking-editorial text-dlf-red">{dict.why.eyebrow}</p>
-          <h2 className="font-display mt-3 text-balance text-3xl font-bold text-dlf-navy sm:text-4xl lg:text-5xl">
-            {dict.why.title}
-          </h2>
-          <p className="mt-5 text-base text-dlf-stone sm:text-lg">{dict.why.intro}</p>
-        </Reveal>
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
+          <Reveal className="lg:col-span-5">
+            <p className="text-[10px] font-bold uppercase tracking-editorial text-dlf-red">{dict.why.eyebrow}</p>
+            <h2 className="font-display mt-3 text-balance text-3xl font-bold text-dlf-navy sm:text-4xl lg:text-5xl">
+              {dict.why.title}
+            </h2>
+            <p className="mt-5 text-base text-dlf-stone sm:text-lg">{dict.why.intro}</p>
 
-        <Stagger delay={0.1} className="mt-10 grid grid-cols-1 gap-5 sm:mt-14 sm:grid-cols-2 lg:grid-cols-4">
-          {dict.why.items.map((item, i) => {
-            const Icon = whyIcons[i % whyIcons.length];
-            return (
-              <StaggerItem
-                key={item.title}
-                variants={fadeUp}
-                className="rounded-2xl border border-dlf-line bg-dlf-cream p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl"
-              >
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-navy text-white shadow-md">
-                  <Icon className="h-5 w-5" />
-                </span>
-                <h3 className="font-display mt-5 text-lg font-bold text-dlf-navy">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-dlf-stone">{item.body}</p>
-              </StaggerItem>
-            );
-          })}
-        </Stagger>
+            <div className="relative mt-8 aspect-[4/3] overflow-hidden rounded-2xl shadow-xl ring-1 ring-dlf-line">
+              <Image
+                src="/images/advisor-hispanic.png"
+                alt="Hispanic insurance advisor explaining Medicare to clients"
+                fill
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="object-cover editorial-img"
+              />
+              <span className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/55 to-transparent" />
+              <span className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full bg-white/95 px-3 py-1.5 text-[10px] font-bold uppercase tracking-editorial text-dlf-navy backdrop-blur sm:text-[11px]">
+                <Languages className="h-3 w-3 text-dlf-cyan" />
+                Real consult · Real bilingüe
+              </span>
+            </div>
+          </Reveal>
+
+          <Stagger delay={0.1} className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:col-span-7">
+            {dict.why.items.map((item, i) => {
+              const Icon = whyIcons[i % whyIcons.length];
+              return (
+                <StaggerItem
+                  key={item.title}
+                  variants={fadeUp}
+                  className="rounded-2xl border border-dlf-line bg-dlf-cream p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl"
+                >
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-navy text-white shadow-md">
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <h3 className="font-display mt-5 text-lg font-bold text-dlf-navy">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-dlf-stone">{item.body}</p>
+                </StaggerItem>
+              );
+            })}
+          </Stagger>
+        </div>
       </div>
     </section>
   );
@@ -193,34 +210,59 @@ export function Why({ dict }: { dict: MedicareDict }) {
 export function Benefits({ dict }: { dict: MedicareDict }) {
   return (
     <section className="bg-dlf-cream px-5 py-16 sm:py-20 lg:px-8 lg:py-28">
-      <div className="mx-auto max-w-5xl rounded-3xl bg-gradient-navy p-8 text-white shadow-2xl sm:p-12 lg:p-16">
-        <Reveal>
-          <p className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-editorial text-dlf-red">
-            <Award className="h-3.5 w-3.5" />
-            {dict.benefits.eyebrow}
-          </p>
-          <h2 className="font-display mt-4 text-balance text-3xl font-bold sm:text-4xl">
-            {dict.benefits.title}
-          </h2>
-        </Reveal>
-        <Stagger delay={0.08} className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2">
-          {dict.benefits.items.map((item) => (
-            <StaggerItem
-              key={item}
-              variants={fadeUp}
-              className="flex items-start gap-3 rounded-xl bg-white/5 px-4 py-3 backdrop-blur"
-            >
-              <Check className="mt-0.5 h-5 w-5 flex-none text-dlf-success" strokeWidth={3} />
-              <span className="text-sm text-white/95 sm:text-base">{item}</span>
-            </StaggerItem>
-          ))}
-        </Stagger>
+      <div className="mx-auto max-w-6xl">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-navy shadow-2xl">
+          {/* Photo strip on top */}
+          <div className="relative aspect-[16/7] w-full overflow-hidden sm:aspect-[16/5]">
+            <Image
+              src="/images/healthcare-scene.png"
+              alt="Before and after — confused about Medicare vs. confident after our consult"
+              fill
+              sizes="(min-width: 1024px) 80vw, 100vw"
+              className="object-cover editorial-img"
+            />
+            <span className="absolute inset-0 bg-gradient-to-b from-black/15 to-black/50" />
+            <span className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full bg-dlf-red px-3 py-1.5 text-[10px] font-bold uppercase tracking-editorial text-white shadow-md sm:text-[11px]">
+              Before · After
+            </span>
+          </div>
+
+          <div className="p-8 text-white sm:p-12 lg:p-16">
+            <Reveal>
+              <p className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-editorial text-dlf-red">
+                <Award className="h-3.5 w-3.5" />
+                {dict.benefits.eyebrow}
+              </p>
+              <h2 className="font-display mt-4 text-balance text-3xl font-bold sm:text-4xl">
+                {dict.benefits.title}
+              </h2>
+            </Reveal>
+            <Stagger delay={0.08} className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              {dict.benefits.items.map((item) => (
+                <StaggerItem
+                  key={item}
+                  variants={fadeUp}
+                  className="flex items-start gap-3 rounded-xl bg-white/5 px-4 py-3 backdrop-blur"
+                >
+                  <Check className="mt-0.5 h-5 w-5 flex-none text-dlf-success" strokeWidth={3} />
+                  <span className="text-sm text-white/95 sm:text-base">{item}</span>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </div>
+        </div>
       </div>
     </section>
   );
 }
 
 // ───────────────────────────────────────────────── SOCIAL PROOF
+const testimonialAvatars = [
+  '/images/grandmother-portrait.png',
+  '/images/retiree-smiling.png',
+  '/images/advisor-hispanic.png',
+];
+
 export function Proof({ dict }: { dict: MedicareDict }) {
   return (
     <section id="reviews" className="bg-white px-5 py-16 sm:py-20 lg:px-8 lg:py-28">
@@ -235,31 +277,119 @@ export function Proof({ dict }: { dict: MedicareDict }) {
           </h2>
         </Reveal>
         <Stagger delay={0.1} className="mt-10 grid grid-cols-1 gap-5 sm:mt-14 md:grid-cols-3">
-          {dict.proof.items.map((t) => (
+          {dict.proof.items.map((t, i) => (
             <StaggerItem
               key={t.name}
               variants={fadeUp}
               className="flex flex-col rounded-2xl border border-dlf-line bg-dlf-cream p-6 shadow-sm transition-all hover:-translate-y-1 hover:shadow-xl"
             >
               <div className="flex items-center gap-1">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" strokeWidth={0} />
+                {Array.from({ length: 5 }).map((_, j) => (
+                  <Star key={j} className="h-4 w-4 fill-yellow-400 text-yellow-400" strokeWidth={0} />
                 ))}
               </div>
               <p className="mt-4 flex-1 text-sm leading-relaxed text-dlf-navy sm:text-base">
                 &ldquo;{t.quote}&rdquo;
               </p>
-              <div className="mt-5 border-t border-dlf-line pt-4">
-                <p className="font-bold text-dlf-navy">{t.name}</p>
-                <p className="text-xs text-dlf-stone">{t.city}</p>
-                <p className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-dlf-success/15 px-2.5 py-1 text-[10px] font-bold uppercase tracking-editorial text-dlf-success">
-                  <Check className="h-3 w-3" strokeWidth={3} />
-                  {t.saving}
-                </p>
+              <div className="mt-5 flex items-start gap-3 border-t border-dlf-line pt-4">
+                <span className="relative h-12 w-12 flex-none overflow-hidden rounded-full ring-2 ring-dlf-line">
+                  <Image
+                    src={testimonialAvatars[i % testimonialAvatars.length]}
+                    alt=""
+                    fill
+                    sizes="48px"
+                    className="object-cover"
+                  />
+                </span>
+                <div className="flex-1">
+                  <p className="font-bold text-dlf-navy">{t.name}</p>
+                  <p className="text-xs text-dlf-stone">{t.city}</p>
+                  <p className="mt-1.5 inline-flex items-center gap-1.5 rounded-full bg-dlf-success/15 px-2.5 py-1 text-[10px] font-bold uppercase tracking-editorial text-dlf-success">
+                    <Check className="h-3 w-3" strokeWidth={3} />
+                    {t.saving}
+                  </p>
+                </div>
               </div>
             </StaggerItem>
           ))}
         </Stagger>
+      </div>
+    </section>
+  );
+}
+
+// ───────────────────────────────────────────────── VISIT US (real office)
+export function VisitUs({ lang }: { lang: 'en' | 'es' }) {
+  const copy = {
+    en: {
+      eyebrow: 'Real office · Real people',
+      title: "We're at 6999 McPherson Rd. Walk in any time.",
+      body: "No call centers in Manila. No 800-numbers passing you around. You'll see the same faces every year — Paola, Elizabeth, Sandra, Roxcella, Rosalva, Jesus, Melina. Bilingual. Local. Available.",
+      cta: 'Get directions',
+    },
+    es: {
+      eyebrow: 'Oficina real · Gente real',
+      title: 'Estamos en 6999 McPherson Rd. Pasa cuando quieras.',
+      body: 'Sin call centers en Manila. Sin números 800 que te pasan de uno a otro. Verás las mismas caras cada año — Paola, Elizabeth, Sandra, Roxcella, Rosalva, Jesus, Melina. Bilingüe. Local. Disponible.',
+      cta: 'Cómo llegar',
+    },
+  }[lang];
+
+  return (
+    <section className="bg-dlf-cream px-5 py-16 sm:py-20 lg:px-8 lg:py-28">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-14">
+          <Reveal>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-xl">
+              <Image
+                src="/images/family-3gen.png"
+                alt="Familia esperando en la oficina de De La Fuente Insurance Group"
+                fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="object-cover editorial-img"
+              />
+              <span className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/55 to-transparent" />
+              <span className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full bg-white/95 px-3 py-1.5 text-[10px] font-bold uppercase tracking-editorial text-dlf-navy backdrop-blur sm:text-[11px]">
+                <MapPin className="h-3 w-3 text-dlf-red" />
+                Laredo, TX 78041
+              </span>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1} className="flex flex-col justify-center">
+            <p className="text-[10px] font-bold uppercase tracking-editorial text-dlf-red">{copy.eyebrow}</p>
+            <h2 className="font-display mt-3 text-balance text-3xl font-bold text-dlf-navy sm:text-4xl lg:text-5xl">
+              {copy.title}
+            </h2>
+            <p className="mt-5 text-base text-dlf-stone sm:text-lg">{copy.body}</p>
+
+            <ul className="mt-6 space-y-3 text-sm text-dlf-navy">
+              <li className="flex items-start gap-3">
+                <MapPin className="mt-0.5 h-4 w-4 flex-none text-dlf-red" />
+                <span>6999 McPherson Rd, Suite 103B, Laredo, TX 78041</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Clock className="mt-0.5 h-4 w-4 flex-none text-dlf-red" />
+                <span>{lang === 'es' ? 'Lun–Vie 9 AM – 6 PM · Sáb con cita' : 'Mon–Fri 9 AM – 6 PM · Sat by appointment'}</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Phone className="mt-0.5 h-4 w-4 flex-none text-dlf-red" />
+                <a href={telLink('956-568-6293')} className="font-bold transition-colors hover:text-dlf-red">956-568-6293</a>
+              </li>
+            </ul>
+
+            <div className="mt-7">
+              <a
+                href="https://maps.google.com/?q=6999+McPherson+Rd+Suite+103B+Laredo+TX+78041"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border-2 border-dlf-navy bg-white px-6 py-3 text-sm font-bold uppercase tracking-editorial text-dlf-navy transition-colors hover:bg-dlf-navy hover:text-white"
+              >
+                {copy.cta}
+              </a>
+            </div>
+          </Reveal>
+        </div>
       </div>
     </section>
   );
@@ -383,7 +513,17 @@ export function Urgency({ dict, phone }: { dict: MedicareDict; phone: string }) 
 // ───────────────────────────────────────────────── FINAL CTA
 export function FinalCta({ dict, message }: { dict: MedicareDict; message: string }) {
   return (
-    <section id="contact" className="relative overflow-hidden bg-gradient-navy px-5 py-16 text-white sm:py-20 lg:px-8 lg:py-28">
+    <section id="contact" className="relative isolate overflow-hidden px-5 py-16 text-white sm:py-20 lg:px-8 lg:py-28">
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/images/laredo-sunset.png"
+          alt="Downtown Laredo at sunset"
+          fill
+          sizes="100vw"
+          className="object-cover editorial-img"
+        />
+        <span className="absolute inset-0 bg-gradient-to-b from-dlf-navy/85 via-dlf-navy/80 to-dlf-navy/90" />
+      </div>
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
           <span className="mx-auto inline-flex items-center gap-2 rounded-full border border-dlf-red bg-dlf-red/20 px-4 py-1.5 text-[10px] font-bold uppercase tracking-editorial text-white backdrop-blur sm:text-[11px]">
